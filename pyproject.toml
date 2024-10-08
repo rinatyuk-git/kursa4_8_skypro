@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "coursework 7 drf"
+version = "0.1.0"
+description = "SkyPro Coursework 7 for DRF practice"
+authors = ["rinatyuk-git <17_ufo_RB@proton.me>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.1.2"
+python-dotenv = "^1.0.1"
+django-admin = "^2.0.2"
+psycopg2-binary = "^2.9.9"
+djangorestframework = "^3.15.2"
+djangorestframework-simplejwt = "^5.3.1"
+django-filter = "^24.3"
+django-cors-headers = "^4.4.0"
+celery = "^5.4.0"
+redis = "^5.1.1"
+django-celery-beat = "^2.7.0"
+flake8 = "^7.1.1"
+coverage = "^7.6.1"
+pillow = "^10.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
