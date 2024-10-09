@@ -20,6 +20,13 @@ class User(AbstractUser):
         blank=True,
         null=True,
     )  # город,
+    tg_nickname = models.CharField(
+        max_length=55,
+        verbose_name="TG user name",
+        help_text="Укажите ник в Телеграм",
+        blank=True,
+        null=True,
+    )  # Телеграм пользователя,
     avatar = models.ImageField(
         upload_to="users/images",
         verbose_name="Аватар пользователя",
