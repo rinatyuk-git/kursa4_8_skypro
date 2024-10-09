@@ -1,3 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
+from habits.models import Habit
+
+
+@admin.register(Habit)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "action",
+    )
