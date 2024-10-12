@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'corsheaders',
+    'django_celery_beat',
+    'drf_yasg',
 
     'habits',
     'users',
@@ -204,8 +206,11 @@ CELERY_TASK_TIME_LIMIT = 30 * 60
 
 # Настройки для Celery Beat
 CELERY_BEAT_SCHEDULE = {
-    'blocking_user': {
-        'task': 'users.tasks.blocking_user',
+    'share_information': {
+        'task': 'habits.tasks.share_information',
         'schedule': timedelta(seconds=40),
     },
 }
+
+TG_URL = "https://api.telegram.org/bot"
+TG_BOT_TOKEN = os.getenv('TG_BOT_TOKEN')

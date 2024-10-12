@@ -1,7 +1,7 @@
 from datetime import timedelta
 
 from django.db import models
-
+from django.core.validators import MaxValueValidator
 from config import settings
 
 NULLABLE = {"blank": True, "null": True}
@@ -36,12 +36,14 @@ class Habit(models.Model):
         verbose_name='Периодичность',
         help_text="Укажите периодичность выполнения привычки в днях",
         default=1,
+        validators=[MaxValueValidator(7)],
         **NULLABLE,
     )  # Периодичность (по умолчанию ежедневная) — периодичность выполнения привычки для напоминания в днях.
     action_duration = models.DurationField(
         verbose_name='Продолжительность',
         help_text="Укажите продолжительность выполнения привычки в минутах",
         default=timedelta(minutes=2),
+        validators=[MaxValueValidator(timedelta(minutes=2))],
         **NULLABLE,
     )  # Время на выполнение — время, которое предположительно потратит пользователь на выполнение привычки.
     related_action = models.ForeignKey(
@@ -57,10 +59,6 @@ class Habit(models.Model):
         help_text="Действие, которое представляет собой вознаграждение",
         ** NULLABLE,
     )  # Вознаграждение — чем пользователь должен себя вознаградить после выполнения привычки.
-    is_useful = models.BooleanField(
-        default=False,
-        verbose_name='Признак приятной привычки',
-    )  # Признак приятной привычки — привычка, которую можно привязать к выполнению полезной привычки.
     is_pleasant = models.BooleanField(
         default=False,
         verbose_name='Признак приятной привычки',
