@@ -8,14 +8,17 @@ class HabitSerializer(serializers.ModelSerializer):
 
     def validate_related_action(self, obj):
         """ Проверка связанных привычек """
-        if not obj.is_pleasant:
+        if obj and not obj.is_pleasant:
             raise ValidationError("В связанные привычки могут попадать только приятные привычки.")
         return obj
 
     def validate(self, data):
         """ Проверка привычек на: """
+        #  связанная привычка
         related_action = data.get('related_action') or (self.instance and self.instance.related_action)
+        #  вознаграждение
         prize_action = data.get('prize_action') or (self.instance and self.instance.prize_action)
+        #  приятная привычка
         is_pleasant = data.get('is_pleasant') or (self.instance and self.instance.is_pleasant)
         if related_action and prize_action:
             """ добавление связанной привычки и вознаграждения одновременно """
