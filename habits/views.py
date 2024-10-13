@@ -4,7 +4,6 @@ from rest_framework.permissions import IsAuthenticated
 from habits.models import Habit
 from habits.paginators import PagePaginator
 from habits.serializers import HabitSerializer
-from habits.tasks import share_information
 from users.permissions import IsOwner
 
 
