@@ -21,7 +21,7 @@ class Habit(models.Model):
         help_text="Укажите место действия",
         **NULLABLE,
     )  # Место — место, в котором необходимо выполнять привычку.
-    action_time_for = models.TimeField(
+    action_time = models.TimeField(
         verbose_name='Время начала выполнения привычки',
         help_text="Укажите время, когда необходимо выполнять привычку",
         ** NULLABLE,
@@ -68,9 +68,14 @@ class Habit(models.Model):
         verbose_name='Признак публичности',
     )  # Признак публичности — привычки можно публиковать в общий доступ, чтобы другие пользователи могли брать в
     # пример чужие привычки.
+    action_datetime = models.DateTimeField(
+        verbose_name='Дата/Время циклического выполнения привычки',
+        help_text="Укажите время, когда необходимо выполнять привычку",
+        **NULLABLE,
+    )  # Дата/Время — дата/время, когда запускается цикличность привычек.
 
     def __str__(self):
-        return f'я буду {self.action} в {self.action_time_for} в {self.action_place}'
+        return f'я буду {self.action} в {self.action_time} в {self.action_place}'
     # я буду [ДЕЙСТВИЕ] в [ВРЕМЯ] в [МЕСТО]
 
     class Meta:
