@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
 from habits.models import Habit
-from habits.paginators import PagePaginator
+# from habits.paginators import PagePaginator
 from habits.serializers import HabitSerializer
 from users.permissions import IsOwner
 
@@ -24,7 +24,7 @@ class HabitListAPIView(generics.ListAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = (IsAuthenticated | IsOwner,)
-    pagination_class = PagePaginator
+    # pagination_class = PagePaginator
 
     def get_queryset(self):
         user = self.request.user
@@ -59,7 +59,7 @@ class PublishedHabitListAPIView(generics.ListAPIView):
     queryset = Habit.objects.all()
     serializer_class = HabitSerializer
     permission_classes = (IsAuthenticated,)
-    pagination_class = PagePaginator
+    # pagination_class = PagePaginator
 
     def get_queryset(self):
         """ Подготовка списка публичных привычек """
