@@ -1,4 +1,6 @@
-kursa4_8_skypro great practice with Docker
+Курсовая 8. Docker
+
+Great practice with Docker
 
 For starting of containers, please use command
 
